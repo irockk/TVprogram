@@ -29,15 +29,15 @@ namespace MainAdminApp
         {
             string Login = loginBox.Text;
             string Password = passwordBox.Text;
-            if (User.CheckSignInLogin(Login, Password, program.userList) == -1)
-                MessageBox.Show("Incorect login");
-            else if (User.CheckSignInLogin(Login, Password, program.userList) == 0)
-                MessageBox.Show("Incorect password");
+            if (program.CheckSignInLogin(Login, Password) == -1)
+                MessageBox.Show("Неправильний логін");
+            else if (program.CheckSignInLogin(Login, Password) == 0)
+                MessageBox.Show("Неправильний пароль");
             else
             {
                 Hide();
-                MainMenuAdmin form = new MainMenuAdmin();
-                form.Show();
+                MainMenuAdmin MainForm = new MainMenuAdmin();
+                MainForm.Show();
             }
 
         }
@@ -59,18 +59,18 @@ namespace MainAdminApp
             string Password = passwordBox.Text;
             string Password2 = password2Box.Text;
 
-            if (User.CheckLogin(Login, program.userList) == 0)
+            if (program.CheckLogin(Login) == 0)
             {
                 loginBox.Clear();
-                MessageBox.Show("Login must contain 1-20 symbols");
+                MessageBox.Show("Логін повинен містити 1-20 символів");
             }
-            else if (User.CheckLogin(Login, program.userList) == -1) MessageBox.Show("Login is not avaliable");
-            else if (User.CheckPass(Password, Password2) == 0)
+            else if (program.CheckLogin(Login) == -1) MessageBox.Show("Логін вже зайнятий. Оберіть інший!");
+            else if (program.CheckPass(Password, Password2) == 0)
             {
-                MessageBox.Show("Passwords does not match");
+                MessageBox.Show("Паролі не співпадають");
                 password2Box.Clear();
             }
-            else if (User.CheckPass(Password, Password2) == -1) MessageBox.Show("Passwords must contain at least 6 symbols");
+            else if (program.CheckPass(Password, Password2) == -1) MessageBox.Show("Пароль має містити не менше 6 символів");
             else
             {
                 User newUser = new User(Login, Password);

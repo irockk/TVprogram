@@ -73,7 +73,7 @@ namespace ViewerApp
         private void MainMenuViewer_Load(object sender, EventArgs e)
         {
             FillData();
-            SearchBox.Text = "Введіть пошуковий запит";
+            SearchBox.Text = "Введіть назву телепередачі";
             SearchBox.ForeColor = Color.Gray;
         }
         
@@ -88,11 +88,14 @@ namespace ViewerApp
                 //Set the CheckBox selection.
                 row.Cells["Favourite"].Value = !Convert.ToBoolean(row.Cells["Favourite"].EditedFormattedValue);
 
+                DataGridViewCell cell = this.TvshowGridView.Rows[e.RowIndex].Cells[4];
+                int idFav = Int32.Parse(cell.Value.ToString());
+
                 //If CheckBox is checked, display Message Box.
                 if (Convert.ToBoolean(row.Cells["Favourite"].Value))
                 {
 
-                    program.userCurr.AddFav(program.tvshowList[e.RowIndex]);
+                    program.userCurr.AddFav(program.tvshowList[program.TVshowIndexByID(idFav)]);
                     MessageBox.Show(row.Cells[1].Value + " додано до улюблених");
                     program.IsDirty = true;
                 }
@@ -120,6 +123,7 @@ namespace ViewerApp
             dt.DefaultView.Sort = "ChanelName";
         }
 
+        //нумерация строк
         private void TvshowGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             for (int i = 0; i < TvshowGridView.Rows.Count; i++)
@@ -130,9 +134,10 @@ namespace ViewerApp
         private void favouriteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             TvshowGridView.Hide();
-            MessageBox.Show(program.userCurr.Favourite.ToString());
+            MessageBox.Show(program.userCurr.Favourite[0].ToString());
       //    FavouriteGridView.Show();
         }
+
 
         private void SearchBox_Enter(object sender, EventArgs e)
         {
@@ -140,9 +145,6 @@ namespace ViewerApp
             SearchBox.ForeColor = Color.Black;
         }
 
-        private void tVshowBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

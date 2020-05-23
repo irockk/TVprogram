@@ -8,11 +8,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace ConsoleAppTry.Data
 {//класс с сериализацией
     class Dao
-    {
-     //   public Guest GetGuestByName(string name) => hotel.Guests.Single(g => g.Name == name);
-      
+    { 
         TVprogram program;
-   //     const string filePath = "tvprogram.bin";
         string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"MainAdminApp\bin\Debug\");
         public Dao(TVprogram program)
         {

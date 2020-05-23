@@ -46,11 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Add.cs">
+    <Compile Include="AddDate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Add.Designer.cs">
-      <DependentUpon>Add.cs</DependentUpon>
+    <Compile Include="AddDate.Designer.cs">
+      <DependentUpon>AddDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNew.Designer.cs">
+      <DependentUpon>AddNew.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMenuAdmin.cs">
       <SubType>Form</SubType>
@@ -66,8 +72,11 @@
     <Compile Include="SignInAdmin.Designer.cs">
       <DependentUpon>SignInAdmin.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Add.resx">
-      <DependentUpon>Add.cs</DependentUpon>
+    <EmbeddedResource Include="AddDate.resx">
+      <DependentUpon>AddDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNew.resx">
+      <DependentUpon>AddNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenuAdmin.resx">
       <DependentUpon>MainMenuAdmin.cs</DependentUpon>

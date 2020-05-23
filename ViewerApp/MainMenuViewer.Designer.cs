@@ -55,6 +55,7 @@
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Favourite = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tVshowBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.unsortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TvshowGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tVshowBindingSource1)).BeginInit();
@@ -62,6 +63,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -70,7 +72,7 @@
             this.hjfgdfkToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1176, 35);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -81,31 +83,31 @@
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(176, 34);
             this.saveToolStripMenuItem.Text = "Save All";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(112, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(173, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(176, 34);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // favouriteToolStripMenuItem1
             // 
             this.favouriteToolStripMenuItem1.Name = "favouriteToolStripMenuItem1";
-            this.favouriteToolStripMenuItem1.Size = new System.Drawing.Size(68, 20);
+            this.favouriteToolStripMenuItem1.Size = new System.Drawing.Size(100, 29);
             this.favouriteToolStripMenuItem1.Text = "Favourite";
             this.favouriteToolStripMenuItem1.Click += new System.EventHandler(this.favouriteToolStripMenuItem1_Click);
             // 
@@ -119,43 +121,43 @@
             this.forThisWeekToolStripMenuItem,
             this.forNextWeekToolStripMenuItem});
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(117, 29);
             this.showToolStripMenuItem.Text = "TVprogram";
             // 
             // forNowToolStripMenuItem
             // 
             this.forNowToolStripMenuItem.Name = "forNowToolStripMenuItem";
-            this.forNowToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.forNowToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
             this.forNowToolStripMenuItem.Text = "For now";
             // 
             // forTodayToolStripMenuItem
             // 
             this.forTodayToolStripMenuItem.Name = "forTodayToolStripMenuItem";
-            this.forTodayToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.forTodayToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
             this.forTodayToolStripMenuItem.Text = "For today";
             // 
             // forNextHourToolStripMenuItem
             // 
             this.forNextHourToolStripMenuItem.Name = "forNextHourToolStripMenuItem";
-            this.forNextHourToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.forNextHourToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
             this.forNextHourToolStripMenuItem.Text = "For next hour";
             // 
             // forTomorrowToolStripMenuItem
             // 
             this.forTomorrowToolStripMenuItem.Name = "forTomorrowToolStripMenuItem";
-            this.forTomorrowToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.forTomorrowToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
             this.forTomorrowToolStripMenuItem.Text = "For tomorrow";
             // 
             // forThisWeekToolStripMenuItem
             // 
             this.forThisWeekToolStripMenuItem.Name = "forThisWeekToolStripMenuItem";
-            this.forThisWeekToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.forThisWeekToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
             this.forThisWeekToolStripMenuItem.Text = "For this week";
             // 
             // forNextWeekToolStripMenuItem
             // 
             this.forNextWeekToolStripMenuItem.Name = "forNextWeekToolStripMenuItem";
-            this.forNextWeekToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.forNextWeekToolStripMenuItem.Size = new System.Drawing.Size(225, 34);
             this.forNextWeekToolStripMenuItem.Text = "For next week";
             // 
             // hjfgdfkToolStripMenuItem
@@ -163,29 +165,30 @@
             this.hjfgdfkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.byNameToolStripMenuItem,
             this.byGenreToolStripMenuItem,
-            this.byChanelToolStripMenuItem});
+            this.byChanelToolStripMenuItem,
+            this.unsortToolStripMenuItem});
             this.hjfgdfkToolStripMenuItem.Name = "hjfgdfkToolStripMenuItem";
-            this.hjfgdfkToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.hjfgdfkToolStripMenuItem.Size = new System.Drawing.Size(61, 29);
             this.hjfgdfkToolStripMenuItem.Text = "Sort";
             // 
             // byNameToolStripMenuItem
             // 
             this.byNameToolStripMenuItem.Name = "byNameToolStripMenuItem";
-            this.byNameToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.byNameToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.byNameToolStripMenuItem.Text = "by name";
             this.byNameToolStripMenuItem.Click += new System.EventHandler(this.byNameToolStripMenuItem_Click);
             // 
             // byGenreToolStripMenuItem
             // 
             this.byGenreToolStripMenuItem.Name = "byGenreToolStripMenuItem";
-            this.byGenreToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.byGenreToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.byGenreToolStripMenuItem.Text = "by genre";
             this.byGenreToolStripMenuItem.Click += new System.EventHandler(this.byGenreToolStripMenuItem_Click);
             // 
             // byChanelToolStripMenuItem
             // 
             this.byChanelToolStripMenuItem.Name = "byChanelToolStripMenuItem";
-            this.byChanelToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.byChanelToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.byChanelToolStripMenuItem.Text = "by chanel";
             this.byChanelToolStripMenuItem.Click += new System.EventHandler(this.byChanelToolStripMenuItem_Click);
             // 
@@ -193,10 +196,11 @@
             // 
             this.SearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchBox.Location = new System.Drawing.Point(12, 27);
+            this.SearchBox.Location = new System.Drawing.Point(18, 42);
+            this.SearchBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SearchBox.MaxLength = 1000;
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(760, 20);
+            this.SearchBox.Size = new System.Drawing.Size(1138, 26);
             this.SearchBox.TabIndex = 3;
             this.SearchBox.Enter += new System.EventHandler(this.SearchBox_Enter);
             // 
@@ -217,10 +221,12 @@
             this.idDataGridViewTextBoxColumn,
             this.Favourite});
             this.TvshowGridView.DataSource = this.tVshowBindingSource1;
-            this.TvshowGridView.Location = new System.Drawing.Point(12, 53);
+            this.TvshowGridView.Location = new System.Drawing.Point(18, 82);
+            this.TvshowGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TvshowGridView.Name = "TvshowGridView";
             this.TvshowGridView.ReadOnly = true;
-            this.TvshowGridView.Size = new System.Drawing.Size(760, 400);
+            this.TvshowGridView.RowHeadersWidth = 62;
+            this.TvshowGridView.Size = new System.Drawing.Size(1140, 615);
             this.TvshowGridView.TabIndex = 4;
             this.TvshowGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TvshowGridView_CellContentClick);
             this.TvshowGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.TvshowGridView_RowsAdded);
@@ -229,6 +235,7 @@
             // 
             this.Index.HeaderText = "№";
             this.Index.MaxInputLength = 10;
+            this.Index.MinimumWidth = 8;
             this.Index.Name = "Index";
             this.Index.ReadOnly = true;
             this.Index.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -239,6 +246,7 @@
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.MaxInputLength = 100;
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             this.nameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -249,6 +257,7 @@
             this.genreDataGridViewTextBoxColumn.DataPropertyName = "Genre";
             this.genreDataGridViewTextBoxColumn.HeaderText = "Genre";
             this.genreDataGridViewTextBoxColumn.MaxInputLength = 100;
+            this.genreDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.genreDataGridViewTextBoxColumn.Name = "genreDataGridViewTextBoxColumn";
             this.genreDataGridViewTextBoxColumn.ReadOnly = true;
             this.genreDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -259,22 +268,27 @@
             this.chanelNameDataGridViewTextBoxColumn.DataPropertyName = "ChanelName";
             this.chanelNameDataGridViewTextBoxColumn.HeaderText = "ChanelName";
             this.chanelNameDataGridViewTextBoxColumn.MaxInputLength = 100;
+            this.chanelNameDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.chanelNameDataGridViewTextBoxColumn.Name = "chanelNameDataGridViewTextBoxColumn";
             this.chanelNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.chanelNameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.chanelNameDataGridViewTextBoxColumn.Width = 150;
             // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.MaxInputLength = 100;
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 8;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             this.idDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.idDataGridViewTextBoxColumn.Width = 150;
             // 
             // Favourite
             // 
             this.Favourite.HeaderText = "Favourite";
+            this.Favourite.MinimumWidth = 8;
             this.Favourite.Name = "Favourite";
             this.Favourite.ReadOnly = true;
             this.Favourite.Width = 70;
@@ -283,16 +297,23 @@
             // 
             this.tVshowBindingSource1.DataSource = typeof(ConsoleAppTry.Models.TVshow);
             // 
+            // unsortToolStripMenuItem
+            // 
+            this.unsortToolStripMenuItem.Name = "unsortToolStripMenuItem";
+            this.unsortToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.unsortToolStripMenuItem.Text = "unsort";
+            // 
             // MainMenuViewer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(1176, 709);
             this.Controls.Add(this.TvshowGridView);
             this.Controls.Add(this.SearchBox);
             this.Controls.Add(this.menuStrip1);
-            this.MaximumSize = new System.Drawing.Size(900, 550);
-            this.MinimumSize = new System.Drawing.Size(600, 400);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximumSize = new System.Drawing.Size(1339, 816);
+            this.MinimumSize = new System.Drawing.Size(889, 585);
             this.Name = "MainMenuViewer";
             this.Text = "MainMenuViewer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenuViewer_FormClosing);
@@ -334,5 +355,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn chanelNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Favourite;
+        private System.Windows.Forms.ToolStripMenuItem unsortToolStripMenuItem;
     }
 }

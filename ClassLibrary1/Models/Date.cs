@@ -10,13 +10,13 @@ namespace ConsoleAppTry.Models
     public class Date //дата проката = дата начала + дата конца + id фильма
     {
         public DateTime StartTime { set; get; }
-        public DateTime EndTime { set; get; }
-        public TimeSpan Duration { get { return EndTime.Subtract(StartTime); } }
+        public double Duration { set; get; }
+        public DateTime EndTime { get { return StartTime.AddMinutes(Duration); } }
         public int Id { set; get; }
-        public Date(DateTime startTime, DateTime endTime, int id)
+        public Date(DateTime startTime, double duration, int id)
         {
             StartTime = startTime;
-            EndTime = endTime;
+            Duration = duration;
             Id = id;
         }
     }

@@ -28,7 +28,7 @@ namespace ConsoleAppTry.Models
             dateList.Clear();
             for (int i = 0; i < 59; i++)
             {
-                date = new Date(new DateTime(2020, 6, 20, 7, i, i),new DateTime(2020, 6, 20, 7, i + 1, i), i);
+                date = new Date(new DateTime(2020, 6, 20, 7, i, i),i , i);
                 dateList.Add(date);
             }
             // TVshow
@@ -37,14 +37,6 @@ namespace ConsoleAppTry.Models
             for (int i = n; i >= 0; i--)
             {
                 tvshow = new TVshow($"TVshowName{i}", $"TVshowGenre{i}", $"ChanelName{i}", i);
-                try
-                {
-                        tvshow.Date.Add(dateList[i]);
-                }
-                catch
-                {
-                    continue;
-                }
                 tvshowList.Add(tvshow);
             }
 
@@ -125,17 +117,43 @@ namespace ConsoleAppTry.Models
             }
             return res3;
         }
-        /*
-        public int TVshowIndex(int id)
+        public int TVshowIndexByID(int id)
         {
             foreach (TVshow i in tvshowList)
             {
-                if(i.Id == id)
+                if (i.Id == id)
                 {
                     return tvshowList.IndexOf(i);
                 }
             }
+            return -1;
         }
-        */
+        public static int CheckAdd(string name, string ganre, string chanel)
+        {
+            int res = 1;
+            if (name.Length > 50) res = 0;
+            else if (ganre.Length > 50 || chanel.Length > 50) res = -1;
+            return res;
+        }
+        public static bool CheckDuration(string minutes)
+        {
+            double time;
+            bool isDouble = Double.TryParse(minutes, out time);
+            if (isDouble) return true;
+            else return false;
+        }
+
+        public bool CheckTime(DateTime start, double duration)
+        {
+            DateTime end = start.AddMinutes(duration);
+            foreach (Date i in dateList)
+            {
+                if ((start <= i.EndTime) && (end >= i.StartTime))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace ViewerApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenuViewer());
+            Application.Run(new SignIn());
         }
     }
 }

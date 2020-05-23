@@ -83,7 +83,7 @@
             this.OKbutton.Name = "OKbutton";
             this.OKbutton.Size = new System.Drawing.Size(112, 35);
             this.OKbutton.TabIndex = 6;
-            this.OKbutton.Text = "Ok";
+            this.OKbutton.Text = "Додати";
             this.OKbutton.UseVisualStyleBackColor = true;
             this.OKbutton.Click += new System.EventHandler(this.OKbutton_Click);
             // 
@@ -94,7 +94,7 @@
             this.Cancelbutton.Name = "Cancelbutton";
             this.Cancelbutton.Size = new System.Drawing.Size(112, 35);
             this.Cancelbutton.TabIndex = 7;
-            this.Cancelbutton.Text = "Cancel";
+            this.Cancelbutton.Text = "Скасувати";
             this.Cancelbutton.UseVisualStyleBackColor = true;
             this.Cancelbutton.Click += new System.EventHandler(this.Cancelbutton_Click);
             // 
