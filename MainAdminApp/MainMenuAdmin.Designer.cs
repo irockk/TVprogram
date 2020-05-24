@@ -37,21 +37,17 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.календарToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.додатиДатуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.редагуватиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.наСьогодніToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.наЗавтраToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.наЦейТижденьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.всіДатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.датиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.додатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.видалитиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.seeAllTVshowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.seeAlViewersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.UsersGridView = new System.Windows.Forms.DataGridView();
-            this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.TVshowGridView = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,12 +56,18 @@
             this.tVshowBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.UsersCount = new System.Windows.Forms.Label();
-            this.UserCount = new System.Windows.Forms.Label();
+            this.DateGridView = new System.Windows.Forms.DataGridView();
+            this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.durationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Searchbutton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TVshowGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tVshowBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DateGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -86,9 +88,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.календарToolStripMenuItem,
-            this.helpToolStripMenuItem,
-            this.viewToolStripMenuItem,
-            this.helpToolStripMenuItem1});
+            this.датиToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
@@ -109,52 +110,84 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Зберегти";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(121, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Вийти";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // календарToolStripMenuItem
             // 
             this.календарToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.додатиДатуToolStripMenuItem,
-            this.редагуватиToolStripMenuItem,
-            this.видалитиToolStripMenuItem});
+            this.наСьогодніToolStripMenuItem,
+            this.наЗавтраToolStripMenuItem,
+            this.наЦейТижденьToolStripMenuItem,
+            this.всіДатиToolStripMenuItem});
             this.календарToolStripMenuItem.Name = "календарToolStripMenuItem";
-            this.календарToolStripMenuItem.Size = new System.Drawing.Size(71, 22);
-            this.календарToolStripMenuItem.Text = "Календар";
+            this.календарToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.календарToolStripMenuItem.Text = "Телепрограма";
+            this.календарToolStripMenuItem.Click += new System.EventHandler(this.календарToolStripMenuItem_Click);
             // 
-            // додатиДатуToolStripMenuItem
+            // наСьогодніToolStripMenuItem
             // 
-            this.додатиДатуToolStripMenuItem.Name = "додатиДатуToolStripMenuItem";
-            this.додатиДатуToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.додатиДатуToolStripMenuItem.Text = "Додати дату";
-            this.додатиДатуToolStripMenuItem.Click += new System.EventHandler(this.додатиДатуToolStripMenuItem_Click);
+            this.наСьогодніToolStripMenuItem.Name = "наСьогодніToolStripMenuItem";
+            this.наСьогодніToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.наСьогодніToolStripMenuItem.Text = "на сьогодні";
+            this.наСьогодніToolStripMenuItem.Click += new System.EventHandler(this.наСьогодніToolStripMenuItem_Click);
             // 
-            // редагуватиToolStripMenuItem
+            // наЗавтраToolStripMenuItem
             // 
-            this.редагуватиToolStripMenuItem.Name = "редагуватиToolStripMenuItem";
-            this.редагуватиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.редагуватиToolStripMenuItem.Text = "Редагувати";
-            this.редагуватиToolStripMenuItem.Click += new System.EventHandler(this.редагуватиToolStripMenuItem_Click);
+            this.наЗавтраToolStripMenuItem.Name = "наЗавтраToolStripMenuItem";
+            this.наЗавтраToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.наЗавтраToolStripMenuItem.Text = "на завтра";
+            this.наЗавтраToolStripMenuItem.Click += new System.EventHandler(this.наЗавтраToolStripMenuItem_Click);
+            // 
+            // наЦейТижденьToolStripMenuItem
+            // 
+            this.наЦейТижденьToolStripMenuItem.Name = "наЦейТижденьToolStripMenuItem";
+            this.наЦейТижденьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.наЦейТижденьToolStripMenuItem.Text = "на наступні 7 днів";
+            this.наЦейТижденьToolStripMenuItem.Click += new System.EventHandler(this.наЦейТижденьToolStripMenuItem_Click);
+            // 
+            // всіДатиToolStripMenuItem
+            // 
+            this.всіДатиToolStripMenuItem.Name = "всіДатиToolStripMenuItem";
+            this.всіДатиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.всіДатиToolStripMenuItem.Text = "всі дати";
+            this.всіДатиToolStripMenuItem.Click += new System.EventHandler(this.всіДатиToolStripMenuItem_Click);
+            // 
+            // датиToolStripMenuItem
+            // 
+            this.датиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.додатиToolStripMenuItem,
+            this.видалитиToolStripMenuItem});
+            this.датиToolStripMenuItem.Name = "датиToolStripMenuItem";
+            this.датиToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
+            this.датиToolStripMenuItem.Text = "Дата";
+            // 
+            // додатиToolStripMenuItem
+            // 
+            this.додатиToolStripMenuItem.Name = "додатиToolStripMenuItem";
+            this.додатиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.додатиToolStripMenuItem.Text = "Додати";
+            this.додатиToolStripMenuItem.Click += new System.EventHandler(this.додатиToolStripMenuItem_Click);
             // 
             // видалитиToolStripMenuItem
             // 
             this.видалитиToolStripMenuItem.Name = "видалитиToolStripMenuItem";
             this.видалитиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.видалитиToolStripMenuItem.Text = "Видалити";
-            this.видалитиToolStripMenuItem.Click += new System.EventHandler(this.видалитиToolStripMenuItem_Click);
+            this.видалитиToolStripMenuItem.Click += new System.EventHandler(this.видалитиToolStripMenuItem_Click_1);
             // 
             // helpToolStripMenuItem
             // 
@@ -165,98 +198,28 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
             this.helpToolStripMenuItem.Text = "Телепередача";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Додати";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editToolStripMenuItem.Text = "Редагувати";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "Видалити";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.seeAllTVshowsToolStripMenuItem,
-            this.seeAlViewersToolStripMenuItem});
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(71, 22);
-            this.viewToolStripMenuItem.Text = "Дивитися";
-            // 
-            // seeAllTVshowsToolStripMenuItem
-            // 
-            this.seeAllTVshowsToolStripMenuItem.Name = "seeAllTVshowsToolStripMenuItem";
-            this.seeAllTVshowsToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.seeAllTVshowsToolStripMenuItem.Text = "Телепередачі";
-            this.seeAllTVshowsToolStripMenuItem.Click += new System.EventHandler(this.seeAllTVshowsToolStripMenuItem_Click);
-            // 
-            // seeAlViewersToolStripMenuItem
-            // 
-            this.seeAlViewersToolStripMenuItem.Name = "seeAlViewersToolStripMenuItem";
-            this.seeAlViewersToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.seeAlViewersToolStripMenuItem.Text = "Користувачі";
-            this.seeAlViewersToolStripMenuItem.Click += new System.EventHandler(this.seeAlViewersToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem1
-            // 
-            this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(75, 22);
-            this.helpToolStripMenuItem1.Text = "Допомога";
-            // 
-            // UsersGridView
-            // 
-            this.UsersGridView.AllowUserToAddRows = false;
-            this.UsersGridView.AllowUserToDeleteRows = false;
-            this.UsersGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.UsersGridView.AutoGenerateColumns = false;
-            this.UsersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UsersGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.loginDataGridViewTextBoxColumn});
-            this.UsersGridView.DataSource = this.userBindingSource;
-            this.UsersGridView.Location = new System.Drawing.Point(12, 27);
-            this.UsersGridView.Name = "UsersGridView";
-            this.UsersGridView.ReadOnly = true;
-            this.UsersGridView.RowHeadersWidth = 62;
-            this.UsersGridView.Size = new System.Drawing.Size(834, 382);
-            this.UsersGridView.TabIndex = 3;
-            // 
-            // loginDataGridViewTextBoxColumn
-            // 
-            this.loginDataGridViewTextBoxColumn.DataPropertyName = "Login";
-            this.loginDataGridViewTextBoxColumn.HeaderText = "Логін";
-            this.loginDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.loginDataGridViewTextBoxColumn.Name = "loginDataGridViewTextBoxColumn";
-            this.loginDataGridViewTextBoxColumn.ReadOnly = true;
-            this.loginDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(ConsoleAppTry.Models.User);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 418);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "*доступно тільки для перегляду";
             // 
             // TVshowGridView
             // 
@@ -275,7 +238,7 @@
             this.chanelNameDataGridViewTextBoxColumn,
             this.idDataGridViewTextBoxColumn});
             this.TVshowGridView.DataSource = this.tVshowBindingSource;
-            this.TVshowGridView.Location = new System.Drawing.Point(12, 27);
+            this.TVshowGridView.Location = new System.Drawing.Point(11, 25);
             this.TVshowGridView.Name = "TVshowGridView";
             this.TVshowGridView.ReadOnly = true;
             this.TVshowGridView.RowHeadersWidth = 62;
@@ -330,13 +293,11 @@
             // 
             this.SearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchBox.Location = new System.Drawing.Point(363, 4);
-            this.SearchBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SearchBox.Location = new System.Drawing.Point(288, 3);
+            this.SearchBox.Margin = new System.Windows.Forms.Padding(2);
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(482, 20);
+            this.SearchBox.Size = new System.Drawing.Size(474, 20);
             this.SearchBox.TabIndex = 6;
-            this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
-            this.SearchBox.Enter += new System.EventHandler(this.SearchBox_Enter);
             // 
             // UsersCount
             // 
@@ -346,41 +307,107 @@
             this.UsersCount.Size = new System.Drawing.Size(0, 13);
             this.UsersCount.TabIndex = 7;
             // 
-            // UserCount
+            // DateGridView
             // 
-            this.UserCount.AutoSize = true;
-            this.UserCount.Location = new System.Drawing.Point(603, 418);
-            this.UserCount.Name = "UserCount";
-            this.UserCount.Size = new System.Drawing.Size(35, 13);
-            this.UserCount.TabIndex = 8;
-            this.UserCount.Text = "label2";
+            this.DateGridView.AllowUserToAddRows = false;
+            this.DateGridView.AllowUserToDeleteRows = false;
+            this.DateGridView.AutoGenerateColumns = false;
+            this.DateGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DateGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.startTimeDataGridViewTextBoxColumn,
+            this.durationDataGridViewTextBoxColumn,
+            this.endTimeDataGridViewTextBoxColumn,
+            this.idDataGridViewTextBoxColumn1});
+            this.DateGridView.DataSource = this.dateBindingSource;
+            this.DateGridView.Location = new System.Drawing.Point(11, 25);
+            this.DateGridView.Name = "DateGridView";
+            this.DateGridView.ReadOnly = true;
+            this.DateGridView.RowHeadersWidth = 62;
+            this.DateGridView.Size = new System.Drawing.Size(833, 418);
+            this.DateGridView.TabIndex = 9;
+            // 
+            // startTimeDataGridViewTextBoxColumn
+            // 
+            this.startTimeDataGridViewTextBoxColumn.DataPropertyName = "StartTime";
+            this.startTimeDataGridViewTextBoxColumn.HeaderText = "Час початку";
+            this.startTimeDataGridViewTextBoxColumn.MaxInputLength = 100;
+            this.startTimeDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
+            this.startTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.startTimeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.startTimeDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // durationDataGridViewTextBoxColumn
+            // 
+            this.durationDataGridViewTextBoxColumn.DataPropertyName = "Duration";
+            this.durationDataGridViewTextBoxColumn.HeaderText = "Тривалість";
+            this.durationDataGridViewTextBoxColumn.MaxInputLength = 100;
+            this.durationDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.durationDataGridViewTextBoxColumn.Name = "durationDataGridViewTextBoxColumn";
+            this.durationDataGridViewTextBoxColumn.ReadOnly = true;
+            this.durationDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.durationDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // endTimeDataGridViewTextBoxColumn
+            // 
+            this.endTimeDataGridViewTextBoxColumn.DataPropertyName = "EndTime";
+            this.endTimeDataGridViewTextBoxColumn.HeaderText = "Час закінчення";
+            this.endTimeDataGridViewTextBoxColumn.MaxInputLength = 100;
+            this.endTimeDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.endTimeDataGridViewTextBoxColumn.Name = "endTimeDataGridViewTextBoxColumn";
+            this.endTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.endTimeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.endTimeDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id телешоу";
+            this.idDataGridViewTextBoxColumn1.MaxInputLength = 100;
+            this.idDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.idDataGridViewTextBoxColumn1.Width = 130;
+            // 
+            // dateBindingSource
+            // 
+            this.dateBindingSource.DataSource = typeof(ConsoleAppTry.Models.Date);
+            // 
+            // Searchbutton
+            // 
+            this.Searchbutton.Location = new System.Drawing.Point(767, 3);
+            this.Searchbutton.Name = "Searchbutton";
+            this.Searchbutton.Size = new System.Drawing.Size(75, 20);
+            this.Searchbutton.TabIndex = 10;
+            this.Searchbutton.Text = "Знайти";
+            this.Searchbutton.UseVisualStyleBackColor = true;
+            this.Searchbutton.Click += new System.EventHandler(this.Searchbutton_Click);
             // 
             // MainMenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 456);
-            this.Controls.Add(this.UserCount);
+            this.Controls.Add(this.Searchbutton);
             this.Controls.Add(this.UsersCount);
             this.Controls.Add(this.SearchBox);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.TVshowGridView);
-            this.Controls.Add(this.UsersGridView);
+            this.Controls.Add(this.DateGridView);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximumSize = new System.Drawing.Size(996, 542);
-            this.MinimumSize = new System.Drawing.Size(670, 323);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(992, 530);
+            this.MinimumSize = new System.Drawing.Size(666, 311);
             this.Name = "MainMenuAdmin";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.Load += new System.EventHandler(this.MainMenuAdmin_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TVshowGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tVshowBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DateGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -396,30 +423,32 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem seeAllTVshowsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem seeAlViewersToolStripMenuItem;
-        private System.Windows.Forms.BindingSource userBindingSource;
-        private System.Windows.Forms.DataGridView UsersGridView;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView TVshowGridView;
         private System.Windows.Forms.BindingSource tVshowBindingSource;
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.Label UsersCount;
-        private System.Windows.Forms.Label UserCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn loginDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn chanelNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem календарToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem додатиДатуToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem редагуватиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem датиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem додатиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem видалитиToolStripMenuItem;
+        private System.Windows.Forms.DataGridView DateGridView;
+        private System.Windows.Forms.BindingSource dateBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn durationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.ToolStripMenuItem наСьогодніToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem наЗавтраToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem наЦейТижденьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem всіДатиToolStripMenuItem;
+        private System.Windows.Forms.Button Searchbutton;
     }
 }
 

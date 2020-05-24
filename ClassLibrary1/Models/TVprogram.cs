@@ -26,9 +26,9 @@ namespace ConsoleAppTry.Models
             //Date
             Date date;
             dateList.Clear();
-            for (int i = 0; i < 59; i++)
+            for (int i = n; i >= 0; i--)
             {
-                date = new Date(new DateTime(2020, 6, 20, 7, i, i),i , i);
+                date = new Date(new DateTime(2020, 6, 20, 7, i, i), i , i);
                 dateList.Add(date);
             }
             // TVshow
@@ -127,6 +127,17 @@ namespace ConsoleAppTry.Models
                 }
             }
             return -1;
+        }
+        public User UserbyLogin(string Login)
+        {
+            foreach(User i in userList)
+            {
+                if (i.Login == Login)
+                {
+                    return i;
+                }
+            }
+            return null;
         }
         public static int CheckAdd(string name, string ganre, string chanel)
         {

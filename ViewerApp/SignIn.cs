@@ -13,7 +13,7 @@ namespace ViewerApp
 {
     public partial class SignIn : Form
     {
-        TVprogram program;
+        public TVprogram program;
         public SignIn()
         {
             InitializeComponent();
@@ -34,8 +34,9 @@ namespace ViewerApp
                 MessageBox.Show("Incorect password");
             else
             {
+                program.userCurr = program.UserbyLogin(Login);
                 Hide();
-                MainMenuViewer form = new MainMenuViewer();
+                MainMenuViewer form = new MainMenuViewer(program);
                 form.Show();
             }
 
@@ -51,7 +52,7 @@ namespace ViewerApp
             label4.Show();
 
         }
-        public User GetGuestByLogin(string login) => program.userList.Single(g => g.Login == login);
+   
         private void SignUpbutton_Click_1(object sender, EventArgs e)
         {
             string Login = loginBox.Text;
@@ -62,9 +63,9 @@ namespace ViewerApp
             if (program.CheckLogin(Login) == 0)
             {
                 loginBox.Clear();
-                MessageBox.Show("Login must contain 1-20 symbols");
+                MessageBox.Show("Логін повинен містити 1-20 символів");
             }
-            else if (program.CheckLogin(Login) == -1) MessageBox.Show("Login is not avaliable");
+            else if (program.CheckLogin(Login) == -1) MessageBox.Show("Логін вже зайнятий. Оберіть інший!");
             else if (program.CheckPass(Password, Password2) == 0)
             {
                 MessageBox.Show("Passwords does not match");
@@ -74,10 +75,11 @@ namespace ViewerApp
             else
             {
                 User newUser = new User(Login, Password);
+                program.userCurr = newUser;
                 program.userList.Add(newUser);
                 program.Save();
                 Hide();
-                MainMenuViewer form = new MainMenuViewer();
+                MainMenuViewer form = new MainMenuViewer(program);
                 form.Show();
             }
 
@@ -99,11 +101,6 @@ namespace ViewerApp
                     case DialogResult.Yes:
                         break;
                 }
-        }
-
-        private void SignIn_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

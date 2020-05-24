@@ -36,19 +36,20 @@ namespace ConsoleAppTry.Models
                     break;
                 }
             }
-            if(!x)
-            Favourite.Add(tvshow);
+            if(!x) Favourite.Add(tvshow);
         }
 
         public void DeleteFav(TVshow tvshow)
         {
-            foreach(TVshow i in Favourite)
+            bool x = false;
+            foreach (TVshow i in Favourite)
             {
                 if (tvshow == i)
                 {
-                    Favourite.Remove(tvshow);
+                    x = true;
                 }
             }
+            if (x) Favourite.Remove(tvshow);
         }
     }
 }

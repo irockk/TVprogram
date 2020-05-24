@@ -93,6 +93,7 @@
     <EmbeddedResource Include="SignInAdmin.resx">
       <DependentUpon>SignInAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\ConsoleAppTry.Models.Date.datasource" />
     <None Include="Properties\DataSources\ConsoleAppTry.Models.TVshow.datasource" />
     <None Include="Properties\DataSources\ConsoleAppTry.Models.User.datasource" />
     <None Include="Properties\Settings.settings">

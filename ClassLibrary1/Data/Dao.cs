@@ -31,6 +31,7 @@ namespace ConsoleAppTry.Data
                 TVprogram st = (TVprogram)serializer.Deserialize(stream);
                 Copy(st.tvshowList, program.tvshowList);
                 Copy(st.userList, program.userList);
+                Copy(st.dateList, program.dateList);
             }
 
             void Copy<T>(List<T> from, List<T> to)

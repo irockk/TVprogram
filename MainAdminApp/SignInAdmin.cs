@@ -39,9 +39,7 @@ namespace MainAdminApp
                 MainMenuAdmin MainForm = new MainMenuAdmin();
                 MainForm.Show();
             }
-
         }
-
         private void Createbutton_Click(object sender, EventArgs e)
         {
             password2Box.Show();
