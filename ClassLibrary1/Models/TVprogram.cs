@@ -154,12 +154,14 @@ namespace ConsoleAppTry.Models
             else return false;
         }
 
-        public bool CheckTime(DateTime start, double duration)
+        public bool CheckTime(DateTime start, double duration, int idshow)
         {
+            TVshow AddShow = tvshowList[TVshowIndexByID(idshow)];
             DateTime end = start.AddMinutes(duration);
             foreach (Date i in dateList)
             {
-                if ((start <= i.EndTime) && (end >= i.StartTime))
+                TVshow CurrShow = tvshowList[TVshowIndexByID(i.Id)];
+                if (CurrShow.ChanelName == AddShow.ChanelName &&(start <= i.EndTime) && (end >= i.StartTime))
                 {
                     return false;
                 }

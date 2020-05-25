@@ -66,14 +66,12 @@ namespace MainAdminApp
         }
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
                 if (TVshowGridView.Visible == false)
                 {
                     TVshowGridView.Show();
                 }
                 var add = new AddNew();
-                if (add.ShowDialog() == DialogResult.Cancel)
+                if (add.ShowDialog() == DialogResult.OK)
                 {
                     program.AddTVshow(add.TVshow);
                     tVshowBindingSource.ResetBindings(false);
@@ -83,8 +81,6 @@ namespace MainAdminApp
                     TVshowGridView.Rows[lastIdx].Selected = true;
                     TVshowGridView.FirstDisplayedScrollingRowIndex = lastIdx;
                 }
-            }
-            catch {}
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -152,31 +148,35 @@ namespace MainAdminApp
             pf.program = this.program;
             if (pf.ShowDialog() == DialogResult.OK)
             {
-                dateBindingSource.ResetBindings(false);
+                program.dateList.Add(pf.Date);
+                FillData();
                 program.IsDirty = true;
                 DateGridView.Hide();
                 DateGridView.Show();
-
-                var lastIdx = DateGridView.Rows.Count - 1;
-                DateGridView.Rows[lastIdx].Selected = true;
-                DateGridView.FirstDisplayedScrollingRowIndex = lastIdx;
             }
         }
         private void видалитиToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             try
             {
-                var DelDate = DateGridView.SelectedRows[0].DataBoundItem as Date;
-                var res = MessageBox.Show($"Видалити {DelDate.StartTime} ?", "", MessageBoxButtons.YesNo);
+                var DelTime = Convert.ToDateTime(DateGridView.SelectedRows[0].Cells[0].Value);
+                var DelIdShow = Convert.ToInt32(DateGridView.SelectedRows[0].Cells[3].Value);
+
+
+                var res = MessageBox.Show($"Видалити {DelTime} ?", "", MessageBoxButtons.YesNo);
                 if (res == DialogResult.Yes)
                 {
-                    program.dateList.Remove(DelDate);
-                   
-
-                    tVshowBindingSource.ResetBindings(false);
+                    for( int i = program.dateList.Count - 1; i >= 0; i--)
+                    {
+                        if(program.dateList[i].StartTime == DelTime && program.dateList[i].Id == DelIdShow)
+                        {
+                            program.dateList.RemoveAt(i);
+                        }
+                    }
+                    DateGridView.Rows.Remove(DateGridView.SelectedRows[0]);
                     program.IsDirty = true;
-                    TVshowGridView.Hide();
-                    TVshowGridView.Show();
+                    DateGridView.Hide();
+                    DateGridView.Show();
                 }
             }
             catch (Exception)
@@ -187,9 +187,12 @@ namespace MainAdminApp
 
 
         //календар
+       
         public void FillData()
         {
-            
+            dt.DefaultView.Sort = "";
+            dt.Columns.Clear();
+            dt.Clear();
             dt.Columns.Add("StartTime", typeof(DateTime));
             dt.Columns.Add("Duration", typeof(double));
             dt.Columns.Add("EndTime", typeof(DateTime));
@@ -212,7 +215,7 @@ namespace MainAdminApp
             dtDate.Clear();
             foreach(Date i in program.dateList)
             {
-                if(i.StartTime >= DateTime.Today && i.EndTime <= DateTime.Today.AddDays(1))
+                if(i.StartTime >= DateTime.Today && i.StartTime <= DateTime.Today.AddDays(1))
                 {
                     dtDate.Rows.Add(i.StartTime, i.Duration, i.EndTime, i.Id);
                 }
@@ -225,7 +228,7 @@ namespace MainAdminApp
             dtDate.Clear();
             foreach (Date i in program.dateList)
             {
-                if (i.StartTime >= DateTime.Today.AddDays(1) && i.EndTime <= DateTime.Today.AddDays(2))
+                if (i.StartTime >= DateTime.Today.AddDays(1) && i.StartTime <= DateTime.Today.AddDays(2))
                 {
                     dtDate.Rows.Add(i.StartTime, i.Duration, i.EndTime, i.Id);
                 }
@@ -248,7 +251,7 @@ namespace MainAdminApp
             dtDate.Clear();
             foreach (Date i in program.dateList)
             {
-                if (i.StartTime >= DateTime.Today && i.EndTime <= DateTime.Today.AddDays(7))
+                if (i.StartTime >= DateTime.Today && i.StartTime <= DateTime.Today.AddDays(7))
                 {
                     dtDate.Rows.Add(i.StartTime, i.Duration, i.EndTime, i.Id);
                 }

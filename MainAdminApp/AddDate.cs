@@ -21,6 +21,7 @@ namespace MainAdminApp
         }
         private void AddDate_Load(object sender, EventArgs e)
         {
+            dateTimePicker.CustomFormat = "dd.MM.yyyy HH:mm";
             DurationBox.Text = "в хвилинах";
             DurationBox.ForeColor = Color.Gray;
             foreach (TVshow i in program.tvshowList)
@@ -35,17 +36,17 @@ namespace MainAdminApp
         }
         private void Addbutton_Click(object sender, EventArgs e)
         {
-            if(!TVprogram.CheckDuration(DurationBox.Text) || Convert.ToDouble(DurationBox.Text) <= 0)  MessageBox.Show("Неправильний формат. Введіть значення у хвилинах!");
-            else if(!program.CheckTime(dateTimePicker.Value, Convert.ToDouble(DurationBox.Text))) MessageBox.Show("Цей час недоступний!");
+            string IdShow = NameBox.Text.Substring(0, NameBox.Text.IndexOf('-'));
+            if (!TVprogram.CheckDuration(DurationBox.Text) || Convert.ToDouble(DurationBox.Text) <= 0)  MessageBox.Show("Неправильний формат. Введіть значення у хвилинах!");
+            else if(!program.CheckTime(dateTimePicker.Value, Convert.ToDouble(DurationBox.Text), Convert.ToInt32(IdShow))) MessageBox.Show("Цей час недоступний!");
             else
             {
-                NameBox.Text = NameBox.Text.Substring(0, NameBox.Text.IndexOf('-'));
-                Date = new Date(dateTimePicker.Value, Convert.ToDouble(DurationBox.Text), Convert.ToInt32(NameBox.Text));
+                Date = new Date(dateTimePicker.Value, Convert.ToDouble(DurationBox.Text), Convert.ToInt32(IdShow));
             }
         }
         private void Cancelbutton_Click(object sender, EventArgs e)
         {
-            Close();
+    //        Close();
         }
     }
 }

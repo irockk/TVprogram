@@ -27,10 +27,6 @@ namespace MainAdminApp
             ChanelBox.Text = tvshow.ChanelName;
         }
 
-        private void Cancelbutton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
         private void OKbutton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(NameBox.Text) != true && string.IsNullOrWhiteSpace(GenreBox.Text) != true && string.IsNullOrWhiteSpace(ChanelBox.Text) != true)
@@ -47,7 +43,6 @@ namespace MainAdminApp
                         TVshow.Genre = GenreBox.Text;
                         TVshow.ChanelName = ChanelBox.Text;
                     }
-                    Close();
                 }
                 else if(TVprogram.CheckAdd(NameBox.Text, GenreBox.Text, ChanelBox.Text) == 0)
                 {

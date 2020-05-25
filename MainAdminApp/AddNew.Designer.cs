@@ -40,48 +40,44 @@
             // 
             // NameBox
             // 
-            this.NameBox.Location = new System.Drawing.Point(92, 48);
-            this.NameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NameBox.Location = new System.Drawing.Point(61, 31);
             this.NameBox.Name = "NameBox";
-            this.NameBox.Size = new System.Drawing.Size(331, 26);
+            this.NameBox.Size = new System.Drawing.Size(222, 20);
             this.NameBox.TabIndex = 0;
             // 
             // Namelabel
             // 
             this.Namelabel.AutoSize = true;
-            this.Namelabel.Location = new System.Drawing.Point(20, 52);
-            this.Namelabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Namelabel.Location = new System.Drawing.Point(13, 34);
             this.Namelabel.Name = "Namelabel";
-            this.Namelabel.Size = new System.Drawing.Size(60, 20);
+            this.Namelabel.Size = new System.Drawing.Size(42, 13);
             this.Namelabel.TabIndex = 1;
             this.Namelabel.Text = "Назва:";
             // 
             // Genrelabel
             // 
             this.Genrelabel.AutoSize = true;
-            this.Genrelabel.Location = new System.Drawing.Point(24, 105);
-            this.Genrelabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Genrelabel.Location = new System.Drawing.Point(16, 68);
             this.Genrelabel.Name = "Genrelabel";
-            this.Genrelabel.Size = new System.Drawing.Size(53, 20);
+            this.Genrelabel.Size = new System.Drawing.Size(39, 13);
             this.Genrelabel.TabIndex = 2;
             this.Genrelabel.Text = "Жанр:";
             // 
             // Chanellabel
             // 
             this.Chanellabel.AutoSize = true;
-            this.Chanellabel.Location = new System.Drawing.Point(24, 162);
-            this.Chanellabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Chanellabel.Location = new System.Drawing.Point(16, 105);
             this.Chanellabel.Name = "Chanellabel";
-            this.Chanellabel.Size = new System.Drawing.Size(60, 20);
+            this.Chanellabel.Size = new System.Drawing.Size(41, 13);
             this.Chanellabel.TabIndex = 4;
             this.Chanellabel.Text = "Канал:";
             // 
             // OKbutton
             // 
-            this.OKbutton.Location = new System.Drawing.Point(18, 348);
-            this.OKbutton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.OKbutton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OKbutton.Location = new System.Drawing.Point(12, 226);
             this.OKbutton.Name = "OKbutton";
-            this.OKbutton.Size = new System.Drawing.Size(112, 35);
+            this.OKbutton.Size = new System.Drawing.Size(75, 23);
             this.OKbutton.TabIndex = 6;
             this.OKbutton.Text = "Додати";
             this.OKbutton.UseVisualStyleBackColor = true;
@@ -89,14 +85,13 @@
             // 
             // Cancelbutton
             // 
-            this.Cancelbutton.Location = new System.Drawing.Point(446, 348);
-            this.Cancelbutton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Cancelbutton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Cancelbutton.Location = new System.Drawing.Point(297, 226);
             this.Cancelbutton.Name = "Cancelbutton";
-            this.Cancelbutton.Size = new System.Drawing.Size(112, 35);
+            this.Cancelbutton.Size = new System.Drawing.Size(75, 23);
             this.Cancelbutton.TabIndex = 7;
             this.Cancelbutton.Text = "Скасувати";
             this.Cancelbutton.UseVisualStyleBackColor = true;
-            this.Cancelbutton.Click += new System.EventHandler(this.Cancelbutton_Click);
             // 
             // ChanelBox
             // 
@@ -113,9 +108,10 @@
             "ТЕТ",
             "К2",
             "5 канал"});
-            this.ChanelBox.Location = new System.Drawing.Point(91, 162);
+            this.ChanelBox.Location = new System.Drawing.Point(61, 105);
+            this.ChanelBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ChanelBox.Name = "ChanelBox";
-            this.ChanelBox.Size = new System.Drawing.Size(331, 28);
+            this.ChanelBox.Size = new System.Drawing.Size(222, 21);
             this.ChanelBox.TabIndex = 8;
             // 
             // GenreBox
@@ -129,16 +125,17 @@
             "Дитячі",
             "Політичні",
             "Освітні"});
-            this.GenreBox.Location = new System.Drawing.Point(90, 105);
+            this.GenreBox.Location = new System.Drawing.Point(60, 68);
+            this.GenreBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenreBox.Name = "GenreBox";
-            this.GenreBox.Size = new System.Drawing.Size(332, 28);
+            this.GenreBox.Size = new System.Drawing.Size(223, 21);
             this.GenreBox.TabIndex = 9;
             // 
             // AddNew
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 402);
+            this.ClientSize = new System.Drawing.Size(384, 261);
             this.Controls.Add(this.GenreBox);
             this.Controls.Add(this.ChanelBox);
             this.Controls.Add(this.Cancelbutton);
@@ -147,7 +144,6 @@
             this.Controls.Add(this.Genrelabel);
             this.Controls.Add(this.Namelabel);
             this.Controls.Add(this.NameBox);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AddNew";
             this.Text = "AddNew";
             this.ResumeLayout(false);

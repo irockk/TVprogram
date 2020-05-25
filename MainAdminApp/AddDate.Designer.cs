@@ -40,6 +40,7 @@
             // 
             // Addbutton
             // 
+            this.Addbutton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Addbutton.Location = new System.Drawing.Point(12, 225);
             this.Addbutton.Name = "Addbutton";
             this.Addbutton.Size = new System.Drawing.Size(75, 23);
@@ -50,6 +51,7 @@
             // 
             // Cancelbutton
             // 
+            this.Cancelbutton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Cancelbutton.Location = new System.Drawing.Point(302, 225);
             this.Cancelbutton.Name = "Cancelbutton";
             this.Cancelbutton.Size = new System.Drawing.Size(70, 24);
@@ -60,8 +62,11 @@
             // 
             // dateTimePicker
             // 
+            this.dateTimePicker.CustomFormat = "\"dd.MM.yyyy HH:MM\"";
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker.Location = new System.Drawing.Point(127, 87);
             this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.ShowUpDown = true;
             this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker.TabIndex = 2;
             // 
