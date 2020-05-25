@@ -27,32 +27,37 @@ namespace MainAdminApp
             FillData();
             DateGridView.Hide();
         }
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            program.Save();
-        }
+        
         //додавання, редагування, видалення TVshow
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-              try
-              {
-            TVshowGridView.CurrentRow.Selected = true;
-            var toDel = TVshowGridView.SelectedRows[0].DataBoundItem as TVshow;
+            try
+            {
+                var toDel = TVshowGridView.SelectedRows[0].DataBoundItem as TVshow;
                 var res = MessageBox.Show($"Видалити {toDel.Name} ?", "", MessageBoxButtons.YesNo);
                 if (res == DialogResult.Yes)
                 {
                     program.tvshowList.Remove(toDel);
-                    TVshowGridView.ClearSelection();
+                    for(int u = program.userList.Count - 1; u >= 0; u--)
+                    {
+                        for(int i = program.userList[u].Favourite.Count - 1; i >=0; i--)
+                        {
+                            if (toDel == program.userList[u].Favourite[i])
+                            {
+                                program.userList[u].Favourite.Remove(program.userList[u].Favourite[i]);
+                            }
+                        }
+                    }
                     tVshowBindingSource.ResetBindings(false);
                     program.IsDirty = true;
                     TVshowGridView.Hide();
                     TVshowGridView.Show();
                 }
-              }
-              catch(Exception)
-               {
-                    MessageBox.Show("Нічого не виділено. Виделіть весь рядок для видалення!");
-               }
+            }
+            catch(Exception)
+            {
+              MessageBox.Show("Нічого не виділено. Виделіть весь рядок для видалення!");
+            }
         }
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -94,7 +99,13 @@ namespace MainAdminApp
                 MessageBox.Show("Нічого не виділено. Виделіть весь рядок для редагування!");
             }
         }
+
+
         //Выход и сохранение
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            program.Save();
+        }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
@@ -116,6 +127,8 @@ namespace MainAdminApp
                     break;
             }
         }
+
+
         //робота с датами
         public void Fill()
         {
@@ -147,6 +160,8 @@ namespace MainAdminApp
                 DateGridView.Show();
             }
         }
+
+
         //календар
         public void FillData()
         {
@@ -162,7 +177,12 @@ namespace MainAdminApp
             DateGridView.DataSource = dt;
             dt.DefaultView.Sort = "StartTime";
         }
-
+        private void TVprogramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TVshowGridView.Hide();
+            SearchBox.Hide();
+            Searchbutton.Hide();
+        }
         private void наСьогодніToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dtDate.Clear();
@@ -176,7 +196,6 @@ namespace MainAdminApp
             DateGridView.DataSource = dtDate;
             DateGridView.Show();
         }
-
         private void наЗавтраToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dtDate.Clear();
@@ -190,7 +209,6 @@ namespace MainAdminApp
             DateGridView.DataSource = dtDate;
             DateGridView.Show();
         }
-
         private void всіДатиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dtDate.Clear();
@@ -201,7 +219,6 @@ namespace MainAdminApp
             DateGridView.DataSource = dtDate;
             DateGridView.Show();
         }
-
         private void наЦейТижденьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dtDate.Clear();
@@ -216,20 +233,12 @@ namespace MainAdminApp
             DateGridView.Show();
         }
 
-        private void календарToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TVshowGridView.Hide();
-            SearchBox.Hide();
-            Searchbutton.Hide();
-        }
-
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TVshowToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             DateGridView.Hide();
             TVshowGridView.Show();
             SearchBox.Show();
         }
-
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DateGridView.Hide();
@@ -238,6 +247,8 @@ namespace MainAdminApp
             SearchBox.Hide();
         }
 
+
+        //пошук
         private void Searchbutton_Click(object sender, EventArgs e)
         {
                 for (int i = 0; i < TVshowGridView.RowCount; i++)

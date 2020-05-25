@@ -27,11 +27,29 @@ namespace ViewerApp
             dateBindingSource.ResetBindings(false);
             DateGridView.DataSource = program.dateList;
         }
+        private void TVshowListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SearchBox.Show();
+            TvshowGridView.Show();
+            DateGridView.Hide();
+            FavGridView.Hide();
+        }
         private void MainMenuViewer_Load(object sender, EventArgs e)
         {
-            FillData();
+            FillTVprogram();
+            FillTVshow();
             SearchBox.Text = "Введіть назву телепередачі";
             SearchBox.ForeColor = Color.Gray;
+            foreach (DataGridViewRow item in TvshowGridView.Rows)
+            {
+                foreach( TVshow show in program.userCurr.Favourite)
+                {
+                    if(Convert.ToInt32(item.Cells[3].Value) == show.Id)
+                    {
+                        item.Cells[4].Value = true;
+                    }
+                }
+            }
         }
 
         //вихід і збереження
@@ -64,22 +82,16 @@ namespace ViewerApp
         //додавання до улюблених
         private void TvshowGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Check to ensure that the row CheckBox is clicked.
+            FillFavouriteChechbox();
             if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
-                //Reference the GridView Row.
                 DataGridViewRow row = TvshowGridView.Rows[e.RowIndex];
-
-                //Set the CheckBox selection.
                 row.Cells["Favourite"].Value = !Convert.ToBoolean(row.Cells["Favourite"].EditedFormattedValue);
 
                 DataGridViewCell cell = TvshowGridView.Rows[e.RowIndex].Cells[3];
                 int idFav = Int32.Parse(cell.Value.ToString());
-
-                //If CheckBox is checked, display Message Box.
                 if (Convert.ToBoolean(row.Cells["Favourite"].Value))
                 {
-
                     program.userCurr.AddFav(program.tvshowList[program.TVshowIndexByID(idFav)]);
                     MessageBox.Show(row.Cells[1].Value + " додано до улюблених");
                     program.IsDirty = true;
@@ -102,19 +114,26 @@ namespace ViewerApp
         }
 
         //сортування
+        private void SortToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TvshowGridView.Show();
+        }
         private void byNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dt.DefaultView.Sort = "Name";
+            FillFavouriteChechbox();
         }
         private void byGenreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dt.DefaultView.Sort = "Genre";
+            FillFavouriteChechbox();
         }
         private void byChanelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dt.DefaultView.Sort = "ChanelName";
+            FillFavouriteChechbox();
         }
-        public void FillData()
+        public void FillTVshow()
         {
             dt.Columns.Add("Name", typeof(string));
             dt.Columns.Add("Genre", typeof(string));
@@ -133,7 +152,13 @@ namespace ViewerApp
                 FavGridView.Rows.Add(i.Name, i.Genre, i.ChanelName, i.Id);
             }
         }
+
+
         //фильтрация
+        private void SearchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SearchBox.Show();
+        }
         private void SearchBox_Enter(object sender, EventArgs e)
         {
             SearchBox.Text = null;
@@ -162,43 +187,129 @@ namespace ViewerApp
         {
             if (SearchBox.Text != "Введіть назву телепередачі")
                 FilterDataView();
+            FillFavouriteChechbox();
         }
-        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        public void FillFavouriteChechbox()
+        {
+            foreach (DataGridViewRow item in TvshowGridView.Rows)
+            {
+                foreach (TVshow show in program.userCurr.Favourite)
+                {
+                    if (Convert.ToInt32(item.Cells[3].Value) == show.Id)
+                    {
+                        item.Cells[4].Value = true;
+                    }
+                }
+            }
+        }
+
+
+        //відображення телепрограми
+        
+        public void FillTVprogram()
+        {
+            dtDate.Columns.Add("StartTime");
+            dtDate.Columns.Add("NameTV");
+            dtDate.Columns.Add("ChanelName");
+            dtDate.Columns.Add("Duration");
+            dtDate.Columns.Add("EndTime");
+        }
+        
+        private void TVprogramStripMenuItem_Click(object sender, EventArgs e)
         {
             SearchBox.Hide();
             TvshowGridView.Hide();
             DateGridView.Show();
+            dtDate.Clear();
+            foreach (Date i in program.dateList)
+            {
+                if (i.StartTime >= DateTime.Today && i.EndTime <= DateTime.Today.AddDays(1))
+                {
+                    int index = program.TVshowIndexByID(i.Id);
+                    if (index != -1)
+                    {
+                        dtDate.Rows.Add(i.StartTime, program.tvshowList[index].Name, program.tvshowList[index].ChanelName, i.Duration, i.EndTime);
+                    }
+                }
+            }
         }
-        public void Fill()
+        private void forNowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dtDate.Columns.Add("Id");
-            dtDate.Columns.Add("ChanelName");
-            dtDate.Columns.Add("StartTime");
-            dtDate.Columns.Add("Duration");
-            dtDate.Columns.Add("EndTime");
+            dtDate.Clear();
+            foreach (Date i in program.dateList)
+            {
+                if (i.StartTime <= DateTime.Now && i.EndTime >= DateTime.Now)
+                {
+                    int index = program.TVshowIndexByID(i.Id);
+                    if (index != -1)
+                    {
+                        dtDate.Rows.Add(i.StartTime, program.tvshowList[index].Name, program.tvshowList[index].ChanelName, i.Duration, i.EndTime);
+                    }
+                }
+            }
+            DateGridView.DataSource = dtDate;
         }
-        private void forNextWeekToolStripMenuItem_Click(object sender, EventArgs e)
+        private void forTodayToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            dtDate.Clear();
+            foreach (Date i in program.dateList)
+            {
+                if (i.StartTime >= DateTime.Today && i.EndTime <= DateTime.Today.AddDays(1))
+                {
+                    int index = program.TVshowIndexByID(i.Id);
+                    if (index != -1)
+                    {
+                        dtDate.Rows.Add(i.StartTime, program.tvshowList[index].Name, program.tvshowList[index].ChanelName, i.Duration, i.EndTime);
+                    }
+                }
+            }
+            DateGridView.DataSource = dtDate;
+        }
+        private void forNext7DaysToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dtDate.Clear();
+            foreach (Date i in program.dateList)
+            {
+                if (i.StartTime >= DateTime.Today && i.EndTime <= DateTime.Today.AddDays(7))
+                {
+                    int index = program.TVshowIndexByID(i.Id);
+                    if (index != -1)
+                    {
+                        dtDate.Rows.Add(i.StartTime, program.tvshowList[index].Name, program.tvshowList[index].ChanelName, i.Duration, i.EndTime);
+                    }
+                }
+            }
+            DateGridView.DataSource = dtDate;
+        }
+        private void AllDatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dtDate.Clear();
             foreach (Date i in program.dateList)
             {
                 int index = program.TVshowIndexByID(i.Id);
-                dtDate.Rows.Add(program.tvshowList[index].Name, program.tvshowList[index].ChanelName, i.StartTime, i.Duration, i.EndTime);
+                if (index != -1)
+                {
+                    dtDate.Rows.Add(i.StartTime, program.tvshowList[index].Name, program.tvshowList[index].ChanelName, i.Duration, i.EndTime);
+                }
             }
             DateGridView.DataSource = dtDate;
-            DateGridView.Show();
         }
-        private void hjfgdfkToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void forTomorrowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TvshowGridView.Show();
-            DateGridView.Hide();
-            FavGridView.Hide();
-        }
-        private void всіТелешоуToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SearchBox.Show();
-            TvshowGridView.Show();
-            DateGridView.Hide();
-            FavGridView.Hide();
+            dtDate.Clear();
+            foreach (Date i in program.dateList)
+            {
+                if (i.StartTime >= DateTime.Today.AddDays(1) && i.EndTime <= DateTime.Today.AddDays(2))
+                {
+                    int index = program.TVshowIndexByID(i.Id);
+                    if (index != -1)
+                    {
+                        dtDate.Rows.Add(i.StartTime, program.tvshowList[index].Name, program.tvshowList[index].ChanelName, i.Duration, i.EndTime);
+                    }
+                }
+            }
+            DateGridView.DataSource = dtDate;
         }
     }
 }

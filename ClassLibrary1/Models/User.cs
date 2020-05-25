@@ -41,15 +41,13 @@ namespace ConsoleAppTry.Models
 
         public void DeleteFav(TVshow tvshow)
         {
-            bool x = false;
-            foreach (TVshow i in Favourite)
+            for(int i = Favourite.Count - 1; i >= 0; i--)
             {
-                if (tvshow == i)
+                if(tvshow == Favourite[i])
                 {
-                    x = true;
+                    Favourite.RemoveAt(i);
                 }
             }
-            if (x) Favourite.Remove(tvshow);
         }
     }
 }

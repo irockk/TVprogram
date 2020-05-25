@@ -102,6 +102,7 @@
             // 
             // NameBox
             // 
+            this.NameBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NameBox.FormattingEnabled = true;
             this.NameBox.Location = new System.Drawing.Point(127, 42);
             this.NameBox.Name = "NameBox";

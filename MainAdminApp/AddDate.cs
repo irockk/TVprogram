@@ -15,8 +15,6 @@ namespace MainAdminApp
     {
        public TVprogram program;
         public Date Date { set; get; }
-
-        public TVshow CurrShow;
         public AddDate()
         {
             InitializeComponent();
@@ -27,7 +25,7 @@ namespace MainAdminApp
             DurationBox.ForeColor = Color.Gray;
             foreach (TVshow i in program.tvshowList)
             {
-                NameBox.Items.Add(i.Name + "  ( Id = " + i.Id + ")");
+                NameBox.Items.Add(i.Id + "- " + i.Name);
             }
         }
         private void DurationBox_Enter(object sender, EventArgs e)
@@ -41,10 +39,10 @@ namespace MainAdminApp
             else if(!program.CheckTime(dateTimePicker.Value, Convert.ToDouble(DurationBox.Text))) MessageBox.Show("Цей час недоступний!");
             else
             {
-                    Date = new Date(dateTimePicker.Value, Convert.ToDouble(DurationBox.Text), CurrShow.Id);
+                NameBox.Text = NameBox.Text.Substring(0, NameBox.Text.IndexOf('-'));
+                Date = new Date(dateTimePicker.Value, Convert.ToDouble(DurationBox.Text), Convert.ToInt32(NameBox.Text));
             }
         }
-
         private void Cancelbutton_Click(object sender, EventArgs e)
         {
             Close();
