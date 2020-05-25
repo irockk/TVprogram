@@ -48,6 +48,11 @@ namespace MainAdminApp
                             }
                         }
                     }
+                    for(int i = program.dateList.Count - 1; i >= 0; i--)
+                    {
+                        if (program.dateList[i].Id == toDel.Id) program.dateList.Remove(program.dateList[i]);
+                    }
+
                     tVshowBindingSource.ResetBindings(false);
                     program.IsDirty = true;
                     TVshowGridView.Hide();
@@ -61,24 +66,28 @@ namespace MainAdminApp
         }
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var pf = new AddNew();
-            if (pf.ShowDialog() == DialogResult.Cancel)
+            try
             {
-                program.AddTVshow(pf.TVshow);
-                tVshowBindingSource.ResetBindings(false);
-                program.IsDirty = true;
-                TVshowGridView.Hide();
-                TVshowGridView.Show();
+                if (TVshowGridView.Visible == false)
+                {
+                    TVshowGridView.Show();
+                }
+                var add = new AddNew();
+                if (add.ShowDialog() == DialogResult.Cancel)
+                {
+                    program.AddTVshow(add.TVshow);
+                    tVshowBindingSource.ResetBindings(false);
+                    program.IsDirty = true;
 
-                // select and scroll to the last row
-                var lastIdx = TVshowGridView.Rows.Count - 1;
-                TVshowGridView.Rows[lastIdx].Selected = true;
-                TVshowGridView.FirstDisplayedScrollingRowIndex = lastIdx;
+                    var lastIdx = TVshowGridView.Rows.Count - 1;
+                    TVshowGridView.Rows[lastIdx].Selected = true;
+                    TVshowGridView.FirstDisplayedScrollingRowIndex = lastIdx;
+                }
             }
+            catch {}
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
             try
             {
                 var toEdit = TVshowGridView.SelectedRows[0].DataBoundItem as TVshow;
@@ -155,9 +164,24 @@ namespace MainAdminApp
         }
         private void видалитиToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            if (DateGridView.Visible == false)
+            try
             {
-                DateGridView.Show();
+                var DelDate = DateGridView.SelectedRows[0].DataBoundItem as Date;
+                var res = MessageBox.Show($"Видалити {DelDate.StartTime} ?", "", MessageBoxButtons.YesNo);
+                if (res == DialogResult.Yes)
+                {
+                    program.dateList.Remove(DelDate);
+                   
+
+                    tVshowBindingSource.ResetBindings(false);
+                    program.IsDirty = true;
+                    TVshowGridView.Hide();
+                    TVshowGridView.Show();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Нічого не виділено. Виделіть весь рядок для видалення!");
             }
         }
 
@@ -232,12 +256,12 @@ namespace MainAdminApp
             DateGridView.DataSource = dtDate;
             DateGridView.Show();
         }
-
         private void TVshowToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             DateGridView.Hide();
             TVshowGridView.Show();
             SearchBox.Show();
+            Searchbutton.Show();
         }
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {

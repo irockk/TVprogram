@@ -458,7 +458,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximumSize = new System.Drawing.Size(1333, 798);
             this.MinimumSize = new System.Drawing.Size(961, 567);
-            this.Name = "MainMenuViewer";
+  //          this.Name = "MainMenuViewer";
             this.Text = "MainMenuViewer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenuViewer_FormClosing);
             this.Load += new System.EventHandler(this.MainMenuViewer_Load);
