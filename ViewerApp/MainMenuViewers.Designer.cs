@@ -1,6 +1,6 @@
 ﻿namespace ViewerApp
 {
-    partial class MainMenuViewer
+    partial class MainMenuViewers
     {
         /// <summary>
         /// Required designer variable.
@@ -150,35 +150,35 @@
             // forNowToolStripMenuItem
             // 
             this.forNowToolStripMenuItem.Name = "forNowToolStripMenuItem";
-            this.forNowToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.forNowToolStripMenuItem.Size = new System.Drawing.Size(259, 34);
             this.forNowToolStripMenuItem.Text = "на зараз";
             this.forNowToolStripMenuItem.Click += new System.EventHandler(this.forNowToolStripMenuItem_Click);
             // 
             // forTodayToolStripMenuItem
             // 
             this.forTodayToolStripMenuItem.Name = "forTodayToolStripMenuItem";
-            this.forTodayToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.forTodayToolStripMenuItem.Size = new System.Drawing.Size(259, 34);
             this.forTodayToolStripMenuItem.Text = "на сьогодні";
             this.forTodayToolStripMenuItem.Click += new System.EventHandler(this.forTodayToolStripMenuItem_Click);
             // 
             // forTomorrowToolStripMenuItem
             // 
             this.forTomorrowToolStripMenuItem.Name = "forTomorrowToolStripMenuItem";
-            this.forTomorrowToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.forTomorrowToolStripMenuItem.Size = new System.Drawing.Size(259, 34);
             this.forTomorrowToolStripMenuItem.Text = "на завтра";
             this.forTomorrowToolStripMenuItem.Click += new System.EventHandler(this.forTomorrowToolStripMenuItem_Click);
             // 
             // forNext7DaysToolStripMenuItem
             // 
             this.forNext7DaysToolStripMenuItem.Name = "forNext7DaysToolStripMenuItem";
-            this.forNext7DaysToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.forNext7DaysToolStripMenuItem.Size = new System.Drawing.Size(259, 34);
             this.forNext7DaysToolStripMenuItem.Text = "на наступні 7 днів";
             this.forNext7DaysToolStripMenuItem.Click += new System.EventHandler(this.forNext7DaysToolStripMenuItem_Click);
             // 
             // AllDatesToolStripMenuItem
             // 
             this.AllDatesToolStripMenuItem.Name = "AllDatesToolStripMenuItem";
-            this.AllDatesToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.AllDatesToolStripMenuItem.Size = new System.Drawing.Size(259, 34);
             this.AllDatesToolStripMenuItem.Text = "всі дати";
             this.AllDatesToolStripMenuItem.Click += new System.EventHandler(this.AllDatesToolStripMenuItem_Click);
             // 
@@ -197,28 +197,28 @@
             // byNameToolStripMenuItem
             // 
             this.byNameToolStripMenuItem.Name = "byNameToolStripMenuItem";
-            this.byNameToolStripMenuItem.Size = new System.Drawing.Size(195, 34);
+            this.byNameToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.byNameToolStripMenuItem.Text = "по назві";
             this.byNameToolStripMenuItem.Click += new System.EventHandler(this.byNameToolStripMenuItem_Click);
             // 
             // byGenreToolStripMenuItem
             // 
             this.byGenreToolStripMenuItem.Name = "byGenreToolStripMenuItem";
-            this.byGenreToolStripMenuItem.Size = new System.Drawing.Size(195, 34);
+            this.byGenreToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.byGenreToolStripMenuItem.Text = "по жанру";
             this.byGenreToolStripMenuItem.Click += new System.EventHandler(this.byGenreToolStripMenuItem_Click);
             // 
             // byChanelToolStripMenuItem
             // 
             this.byChanelToolStripMenuItem.Name = "byChanelToolStripMenuItem";
-            this.byChanelToolStripMenuItem.Size = new System.Drawing.Size(195, 34);
+            this.byChanelToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.byChanelToolStripMenuItem.Text = "по каналу";
             this.byChanelToolStripMenuItem.Click += new System.EventHandler(this.byChanelToolStripMenuItem_Click);
             // 
             // SearchToolStripMenuItem
             // 
             this.SearchToolStripMenuItem.Name = "SearchToolStripMenuItem";
-            this.SearchToolStripMenuItem.Size = new System.Drawing.Size(195, 34);
+            this.SearchToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.SearchToolStripMenuItem.Text = "пошук";
             this.SearchToolStripMenuItem.Click += new System.EventHandler(this.SearchToolStripMenuItem_Click);
             // 
@@ -259,6 +259,7 @@
             this.TvshowGridView.Size = new System.Drawing.Size(1140, 615);
             this.TvshowGridView.TabIndex = 4;
             this.TvshowGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TvshowGridView_CellContentClick);
+            this.TvshowGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TvshowGridView_ColumnHeaderMouseClick);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -445,21 +446,20 @@
             this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Id.Width = 150;
             // 
-            // MainMenuViewer
+            // MainMenuViewers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1176, 702);
             this.Controls.Add(this.SearchBox);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.TvshowGridView);
             this.Controls.Add(this.DateGridView);
             this.Controls.Add(this.FavGridView);
-            this.Controls.Add(this.TvshowGridView);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximumSize = new System.Drawing.Size(1333, 798);
             this.MinimumSize = new System.Drawing.Size(961, 567);
-  //          this.Name = "MainMenuViewer";
-            this.Text = "MainMenuViewer";
+            this.Name = "MainMenuViewers";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenuViewer_FormClosing);
             this.Load += new System.EventHandler(this.MainMenuViewer_Load);
             this.menuStrip1.ResumeLayout(false);

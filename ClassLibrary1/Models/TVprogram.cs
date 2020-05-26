@@ -153,7 +153,6 @@ namespace ConsoleAppTry.Models
             if (isDouble) return true;
             else return false;
         }
-
         public bool CheckTime(DateTime start, double duration, int idshow)
         {
             TVshow AddShow = tvshowList[TVshowIndexByID(idshow)];

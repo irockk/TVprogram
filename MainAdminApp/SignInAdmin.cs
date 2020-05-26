@@ -14,6 +14,7 @@ namespace MainAdminApp
     [Serializable]
     public partial class SignInAdmin : Form
     {
+        bool close = true;
         TVprogram program;
         public SignInAdmin()
         {
@@ -35,9 +36,10 @@ namespace MainAdminApp
                 MessageBox.Show("Неправильний пароль");
             else
             {
-                Hide();
                 MainMenuAdmin MainForm = new MainMenuAdmin();
                 MainForm.Show();
+                Hide();
+                close = false;
             }
         }
         private void Createbutton_Click(object sender, EventArgs e)
@@ -74,22 +76,26 @@ namespace MainAdminApp
                 User newUser = new User(Login, Password);
                 program.userList.Add(newUser);
                 program.Save();
-                Hide();
                 MainMenuAdmin form = new MainMenuAdmin();
                 form.Show();
+                Hide();
+                close = false;
             }
         }
 
         private void SignInAdmin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var res = MessageBox.Show("Ви дійсно хочете вийти?", "", MessageBoxButtons.YesNo);
-            switch (res)
+            if (close)
             {
-                case DialogResult.No:
-                    e.Cancel = true;
-                    break;
-                case DialogResult.Yes:
-                    break;
+                var res = MessageBox.Show("Ви дійсно хочете вийти?", "", MessageBoxButtons.YesNo);
+                switch (res)
+                {
+                    case DialogResult.No:
+                        e.Cancel = true;
+                        break;
+                    case DialogResult.Yes:
+                        break;
+                }
             }
         }
 

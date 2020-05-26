@@ -14,6 +14,7 @@ namespace MainAdminApp
 {
     public partial class AddNew : Form
     {
+        public TVprogram program;
         public TVshow TVshow { set; get; }
         public AddNew()
         {

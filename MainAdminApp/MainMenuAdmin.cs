@@ -55,8 +55,8 @@ namespace MainAdminApp
 
                     tVshowBindingSource.ResetBindings(false);
                     program.IsDirty = true;
-                    TVshowGridView.Hide();
-                    TVshowGridView.Show();
+                    TVshowGridView.DataSource = null;
+                    TVshowGridView.DataSource = program.tvshowList;
                 }
             }
             catch(Exception)
@@ -66,18 +66,21 @@ namespace MainAdminApp
         }
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                if (TVshowGridView.Visible == false)
-                {
-                    TVshowGridView.Show();
-                }
-                var add = new AddNew();
-                if (add.ShowDialog() == DialogResult.OK)
+            if (TVshowGridView.Visible == false)
+            {
+               TVshowGridView.Show();
+            }
+            var add = new AddNew();
+            add.program = program;
+            if (add.ShowDialog() == DialogResult.OK)
                 {
                     program.AddTVshow(add.TVshow);
                     tVshowBindingSource.ResetBindings(false);
                     program.IsDirty = true;
+                    TVshowGridView.DataSource = null;
+                    TVshowGridView.DataSource = program.tvshowList;
 
-                    var lastIdx = TVshowGridView.Rows.Count - 1;
+                var lastIdx = TVshowGridView.Rows.Count - 1;
                     TVshowGridView.Rows[lastIdx].Selected = true;
                     TVshowGridView.FirstDisplayedScrollingRowIndex = lastIdx;
                 }
@@ -119,7 +122,7 @@ namespace MainAdminApp
         {
             if (!program.IsDirty)
                 return;
-            var res = MessageBox.Show("Save data before exit?", "", MessageBoxButtons.YesNoCancel);
+            var res = MessageBox.Show("Зберегти дані перед виходом?", "", MessageBoxButtons.YesNoCancel);
             switch (res)
             {
                 case DialogResult.Cancel:
@@ -145,7 +148,7 @@ namespace MainAdminApp
         private void додатиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var pf = new AddDate();
-            pf.program = this.program;
+            pf.program = program;
             if (pf.ShowDialog() == DialogResult.OK)
             {
                 program.dateList.Add(pf.Date);
@@ -175,13 +178,16 @@ namespace MainAdminApp
                     }
                     DateGridView.Rows.Remove(DateGridView.SelectedRows[0]);
                     program.IsDirty = true;
-                    DateGridView.Hide();
-                    DateGridView.Show();
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("Нічого не виділено. Виделіть весь рядок для видалення!");
+                if(DateGridView.Visible == false)
+                {
+                    DateGridView.Show();
+                    TVshowGridView.Hide();
+                }
             }
         }
 
@@ -207,8 +213,6 @@ namespace MainAdminApp
         private void TVprogramToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TVshowGridView.Hide();
-            SearchBox.Hide();
-            Searchbutton.Hide();
         }
         private void наСьогодніToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -263,32 +267,17 @@ namespace MainAdminApp
         {
             DateGridView.Hide();
             TVshowGridView.Show();
-            SearchBox.Show();
-            Searchbutton.Show();
         }
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DateGridView.Hide();
             TVshowGridView.Hide();
-            Searchbutton.Hide();
-            SearchBox.Hide();
         }
 
-
-        //пошук
-        private void Searchbutton_Click(object sender, EventArgs e)
+        private void MainMenuAdmin_FormClosed(object sender, FormClosedEventArgs e)
         {
-                for (int i = 0; i < TVshowGridView.RowCount; i++)
-                {
-                TVshowGridView.Rows[i].Selected = false;
-                    for (int j = 0; j < TVshowGridView.ColumnCount; j++)
-                        if (TVshowGridView.Rows[i].Cells[j].Value != null)
-                            if (TVshowGridView.Rows[i].Cells[j].Value.ToString().Contains(SearchBox.Text))
-                            {
-                            TVshowGridView.Rows[i].Selected = true;
-                                break;
-                            }
-                }
+            Application.Exit();
+
         }
     }
 }

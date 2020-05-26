@@ -42,11 +42,8 @@ namespace MainAdminApp
             else
             {
                 Date = new Date(dateTimePicker.Value, Convert.ToDouble(DurationBox.Text), Convert.ToInt32(IdShow));
+                this.DialogResult = DialogResult.OK;
             }
-        }
-        private void Cancelbutton_Click(object sender, EventArgs e)
-        {
-    //        Close();
         }
     }
 }

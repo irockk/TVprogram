@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace ViewerApp
 {
-    public partial class MainMenuViewer : Form
+    public partial class MainMenuViewers : Form
     {
         public TVprogram program;
         DataTable dt = new DataTable();
         DataTable dtDate = new DataTable();
-        public MainMenuViewer(TVprogram pr)
+        public MainMenuViewers(TVprogram pr)
         {
             InitializeComponent();
             program = pr;
@@ -30,6 +30,7 @@ namespace ViewerApp
         private void TVshowListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SearchBox.Show();
+            FillFav();
             TvshowGridView.Show();
             DateGridView.Hide();
             FavGridView.Hide();
@@ -93,13 +94,13 @@ namespace ViewerApp
                 if (Convert.ToBoolean(row.Cells["Favourite"].Value))
                 {
                     program.userCurr.AddFav(program.tvshowList[program.TVshowIndexByID(idFav)]);
-                    MessageBox.Show(row.Cells[1].Value + " додано до улюблених");
+                    MessageBox.Show(row.Cells[0].Value + " додано до улюблених");
                     program.IsDirty = true;
                 }
                 else
                 {
                     program.userCurr.DeleteFav(program.tvshowList[e.RowIndex]);
-                    MessageBox.Show(row.Cells[1].Value + " видалено з улюблених");
+                    MessageBox.Show(row.Cells[0].Value + " видалено з улюблених");
                     program.IsDirty = true;
                 }
             }
@@ -116,10 +117,14 @@ namespace ViewerApp
         //сортування
         private void SortToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SearchBox.Hide();
+            DateGridView.Hide();
+            FavGridView.Hide();
             TvshowGridView.Show();
         }
         private void byNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            dt.DefaultView.Sort = "";
             dt.DefaultView.Sort = "Name";
             FillFavouriteChechbox();
         }
@@ -203,9 +208,7 @@ namespace ViewerApp
             }
         }
 
-
         //відображення телепрограми
-        
         public void FillTVprogram()
         {
             dtDate.Columns.Add("StartTime");
@@ -219,6 +222,7 @@ namespace ViewerApp
         {
             SearchBox.Hide();
             TvshowGridView.Hide();
+            FavGridView.Hide();
             DateGridView.Show();
             dtDate.Clear();
             foreach (Date i in program.dateList)
@@ -286,10 +290,13 @@ namespace ViewerApp
             dtDate.Clear();
             foreach (Date i in program.dateList)
             {
-                int index = program.TVshowIndexByID(i.Id);
-                if (index != -1)
+                if (i.StartTime >= DateTime.Today)
                 {
-                    dtDate.Rows.Add(i.StartTime, program.tvshowList[index].Name, program.tvshowList[index].ChanelName, i.Duration, i.EndTime);
+                    int index = program.TVshowIndexByID(i.Id);
+                    if (index != -1)
+                    {
+                        dtDate.Rows.Add(i.StartTime, program.tvshowList[index].Name, program.tvshowList[index].ChanelName, i.Duration, i.EndTime);
+                    }
                 }
             }
             DateGridView.DataSource = dtDate;
@@ -310,6 +317,11 @@ namespace ViewerApp
                 }
             }
             DateGridView.DataSource = dtDate;
+        }
+
+        private void TvshowGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            FillFavouriteChechbox();
         }
     }
 }

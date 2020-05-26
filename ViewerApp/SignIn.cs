@@ -36,7 +36,7 @@ namespace ViewerApp
             {
                 program.userCurr = program.UserbyLogin(Login);
                 Hide();
-                MainMenuViewer form = new MainMenuViewer(program);
+                MainMenuViewers form = new MainMenuViewers(program);
                 form.Show();
             }
 
@@ -79,7 +79,7 @@ namespace ViewerApp
                 program.userList.Add(newUser);
                 program.Save();
                 Hide();
-                MainMenuViewer form = new MainMenuViewer(program);
+                MainMenuViewers form = new MainMenuViewers(program);
                 form.Show();
             }
 
