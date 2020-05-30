@@ -13,6 +13,7 @@ namespace ViewerApp
 {
     public partial class SignIn : Form
     {
+        bool close = true;
         public TVprogram program;
         public SignIn()
         {
@@ -36,8 +37,9 @@ namespace ViewerApp
             {
                 program.userCurr = program.UserbyLogin(Login);
                 Hide();
-                MainMenuViewers form = new MainMenuViewers(program);
+                MainMenuViewer form = new MainMenuViewer(program);
                 form.Show();
+                close = false;
             }
 
         }
@@ -68,10 +70,10 @@ namespace ViewerApp
             else if (program.CheckLogin(Login) == -1) MessageBox.Show("Логін вже зайнятий. Оберіть інший!");
             else if (program.CheckPass(Password, Password2) == 0)
             {
-                MessageBox.Show("Passwords does not match");
+                MessageBox.Show("Паролі не співпадають");
                 password2Box.Clear();
             }
-            else if (program.CheckPass(Password, Password2) == -1) MessageBox.Show("Passwords must contain at least 6 symbols");
+            else if (program.CheckPass(Password, Password2) == -1) MessageBox.Show("Пароль має містити не менше 6 символів");
             else
             {
                 User newUser = new User(Login, Password);
@@ -79,8 +81,9 @@ namespace ViewerApp
                 program.userList.Add(newUser);
                 program.Save();
                 Hide();
-                MainMenuViewers form = new MainMenuViewers(program);
+                MainMenuViewer form = new MainMenuViewer(program);
                 form.Show();
+                close = false;
             }
 
         }
@@ -92,6 +95,8 @@ namespace ViewerApp
 
         private void SignIn_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (close)
+            {
                 var res = MessageBox.Show("Ви дійсно хочете вийти?", "", MessageBoxButtons.YesNo);
                 switch (res)
                 {
@@ -101,6 +106,7 @@ namespace ViewerApp
                     case DialogResult.Yes:
                         break;
                 }
+            }
         }
     }
 }

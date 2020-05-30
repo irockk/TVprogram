@@ -159,7 +159,7 @@
             this.MaximumSize = new System.Drawing.Size(397, 391);
             this.MinimumSize = new System.Drawing.Size(397, 391);
             this.Name = "SignInAdmin";
-            this.Text = "SingUpAdmin";
+            this.Text = "Вхід адміністратора";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SignInAdmin_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

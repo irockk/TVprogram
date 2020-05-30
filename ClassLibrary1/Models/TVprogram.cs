@@ -9,9 +9,13 @@ namespace ConsoleAppTry.Models
     [Serializable]
     public class TVprogram  //телепрограмма = коллекция телепередач + коллекция пользователей
     {
+        //список телепередач
             public List<TVshow> tvshowList {private set; get; }
+        // список користувачів
             public List<User> userList {private set; get; }
+        //користувач, який зайшов в особистий кабінет
             public User userCurr;
+        //список дат та часу прокату
             public List<Date> dateList {private set; get; }
 
         public bool IsDirty;
@@ -21,6 +25,7 @@ namespace ConsoleAppTry.Models
                 userList = new List<User>();
                 dateList = new List<Date>();
             }
+        //заповнення тестовими даними
         public void FillTestData(int n)
         {
             //Date
@@ -59,23 +64,26 @@ namespace ConsoleAppTry.Models
 
         }
        
-      
+      //збереження
         public void Save()
         {
           new Dao(this).Save();
             IsDirty = false;
         }
+
+    //загрузка
         public void Load()
         {
             new Dao(this).Load();
             IsDirty = false;
         }
-
+        //індексація телешоу
         public void AddTVshow(TVshow tvshow)
         {
             tvshow.Id = tvshowList.Max(p => p.Id) + 1;
             tvshowList.Add(tvshow);
         }
+        //Перевірка на рівність паролів при реєстрації
         public int CheckPass(string pass, string pass2)
         {
             int res1 = 1;
@@ -83,10 +91,11 @@ namespace ConsoleAppTry.Models
             else if (pass.Length < 6) res1 = -1;
             return res1;
         }
+        //Перевірка логіна на правильність введення та унікальність
         public int CheckLogin(string login)
         {
             int res2 = 1;
-            if (login.Length < 1 || login.Length > 20) res2 = 0;
+            if (login.Length < 1 || login.Length >= 20) res2 = 0;
             for (int i = 0; i < userList.Count; i++)
             {
                 if (userList[i].Login == login)
@@ -98,6 +107,7 @@ namespace ConsoleAppTry.Models
             }
             return res2;
         }
+        //Перевірка правильность введення даних при вході
         public int CheckSignInLogin(string login, string pass)
         {
             int res3 = -1;
@@ -117,6 +127,7 @@ namespace ConsoleAppTry.Models
             }
             return res3;
         }
+        //пошук телешоу за індексом
         public int TVshowIndexByID(int id)
         {
             foreach (TVshow i in tvshowList)
@@ -128,6 +139,7 @@ namespace ConsoleAppTry.Models
             }
             return -1;
         }
+        //пошук користувача да логіном
         public User UserbyLogin(string Login)
         {
             foreach(User i in userList)
@@ -139,6 +151,7 @@ namespace ConsoleAppTry.Models
             }
             return null;
         }
+        //Перевірка правильность даних при додаванні та редагування телепередачі
         public static int CheckAdd(string name, string ganre, string chanel)
         {
             int res = 1;
@@ -146,6 +159,7 @@ namespace ConsoleAppTry.Models
             else if (ganre.Length > 50 || chanel.Length > 50) res = -1;
             return res;
         }
+        //Перевірка правильность введення тривалості
         public static bool CheckDuration(string minutes)
         {
             double time;
@@ -153,6 +167,7 @@ namespace ConsoleAppTry.Models
             if (isDouble) return true;
             else return false;
         }
+        //Перевірка чи є введений час вільний
         public bool CheckTime(DateTime start, double duration, int idshow)
         {
             TVshow AddShow = tvshowList[TVshowIndexByID(idshow)];

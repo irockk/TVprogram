@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="Data\Dao.cs" />
     <Compile Include="Models\Date.cs" />
-    <Compile Include="Models\Program.cs" />
     <Compile Include="Models\TVprogram.cs" />
     <Compile Include="Models\TVshow.cs" />
     <Compile Include="Models\User.cs" />

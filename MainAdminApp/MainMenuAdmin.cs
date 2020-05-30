@@ -277,7 +277,6 @@ namespace MainAdminApp
         private void MainMenuAdmin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
-
         }
     }
 }

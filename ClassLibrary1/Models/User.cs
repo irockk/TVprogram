@@ -10,9 +10,11 @@ namespace ConsoleAppTry.Models
     
     public class User //пользователь = логин + пароль + список любимых
     {
-      //  TVprogram program = new TVprogram();
+        //Логін користувача
         public string Login { set; get; }
+        //Пароль користувача
         public string Password { set; get; }
+        //Список улюблених користувача
         public List<TVshow> Favourite { set; get; }
         public User(string login, string password, List<TVshow> favourite = null)
         {

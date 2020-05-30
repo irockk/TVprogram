@@ -159,6 +159,7 @@
             this.MaximumSize = new System.Drawing.Size(397, 391);
             this.MinimumSize = new System.Drawing.Size(397, 391);
             this.Name = "SignIn";
+            this.Text = "Вхід";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SignIn_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

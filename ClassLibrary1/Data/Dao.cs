@@ -10,6 +10,7 @@ namespace ConsoleAppTry.Data
     class Dao
     { 
         TVprogram program;
+        // шлях до файлу
         string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"MainAdminApp\bin\Debug\");
         public Dao(TVprogram program)
         {

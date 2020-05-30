@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace ViewerApp
 {
-    public partial class MainMenuViewers : Form
+    public partial class MainMenuViewer : Form
     {
         public TVprogram program;
         DataTable dt = new DataTable();
         DataTable dtDate = new DataTable();
-        public MainMenuViewers(TVprogram pr)
+        public MainMenuViewer(TVprogram pr)
         {
             InitializeComponent();
             program = pr;
@@ -117,6 +117,8 @@ namespace ViewerApp
         //сортування
         private void SortToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            dt.DefaultView.Sort = "";
+            FillTVshow();
             SearchBox.Hide();
             DateGridView.Hide();
             FavGridView.Hide();
@@ -124,22 +126,27 @@ namespace ViewerApp
         }
         private void byNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dt.DefaultView.Sort = "";
+            //FillTVshow();
             dt.DefaultView.Sort = "Name";
             FillFavouriteChechbox();
         }
         private void byGenreToolStripMenuItem_Click(object sender, EventArgs e)
         {
+         //   FillTVshow();
             dt.DefaultView.Sort = "Genre";
             FillFavouriteChechbox();
         }
         private void byChanelToolStripMenuItem_Click(object sender, EventArgs e)
         {
+          //  FillTVshow();
             dt.DefaultView.Sort = "ChanelName";
             FillFavouriteChechbox();
         }
         public void FillTVshow()
         {
+          //  TvshowGridView.DataSource = null;
+            dt.Rows.Clear();
+            dt.Columns.Clear();
             dt.Columns.Add("Name", typeof(string));
             dt.Columns.Add("Genre", typeof(string));
             dt.Columns.Add("ChanelName", typeof(string));
@@ -171,6 +178,7 @@ namespace ViewerApp
         }
         private void FilterDataView()
         {
+            
             DataTable dtF = new DataTable();
             DataView view = new DataView();
 
@@ -322,6 +330,11 @@ namespace ViewerApp
         private void TvshowGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             FillFavouriteChechbox();
+        }
+
+        private void MainMenuViewers_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

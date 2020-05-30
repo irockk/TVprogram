@@ -1,6 +1,6 @@
 ﻿namespace ViewerApp
 {
-    partial class MainMenuViewers
+    partial class MainMenuViewer
     {
         /// <summary>
         /// Required designer variable.
@@ -63,7 +63,7 @@
             this.endTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.FavGridView = new System.Windows.Forms.DataGridView();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Genre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Калан = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -398,7 +398,7 @@
             this.FavGridView.AllowUserToDeleteRows = false;
             this.FavGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.FavGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
+            this.Nam,
             this.Genre,
             this.Калан,
             this.Id});
@@ -412,12 +412,12 @@
             // 
             // Name
             // 
-            this.Name.HeaderText = "Назва";
-            this.Name.MinimumWidth = 8;
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            this.Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Name.Width = 150;
+            this.Nam.HeaderText = "Назва";
+            this.Nam.MinimumWidth = 8;
+            this.Nam.Name = "Name";
+            this.Nam.ReadOnly = true;
+            this.Nam.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Nam.Width = 150;
             // 
             // Genre
             // 
@@ -446,7 +446,7 @@
             this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Id.Width = 150;
             // 
-            // MainMenuViewers
+            // MainMenuViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -459,8 +459,10 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximumSize = new System.Drawing.Size(1333, 798);
             this.MinimumSize = new System.Drawing.Size(961, 567);
-            this.Name = "MainMenuViewers";
+            this.Name = "MainMenuViewer";
+            this.Text = "Головне меню";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenuViewer_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenuViewers_FormClosed);
             this.Load += new System.EventHandler(this.MainMenuViewer_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -503,7 +505,7 @@
         private System.Windows.Forms.DataGridView DateGridView;
         private System.Windows.Forms.BindingSource dateBindingSource;
         private System.Windows.Forms.DataGridView FavGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn Genre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Калан;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
